@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

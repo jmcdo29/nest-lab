@@ -1,6 +1,47 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "or-guard": {
+      "root": "packages/or-guard",
+      "sourceRoot": "packages/or-guard/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/or-guard/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/or-guard"
+          ],
+          "options": {
+            "jestConfig": "packages/or-guard/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/packages/or-guard",
+            "tsConfig": "packages/or-guard/tsconfig.lib.json",
+            "packageJson": "packages/or-guard/package.json",
+            "main": "packages/or-guard/src/index.ts",
+            "assets": [
+              "packages/or-guard/*.md"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }

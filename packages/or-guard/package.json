@@ -1,0 +1,26 @@
+{
+  "name": "@nest-lab/or-guard",
+  "description": "A mixin guard that allows for one of N guards to pass for the request to be considers authenticated.",
+  "author": {
+    "name": "Jay McDoniel",
+    "email": "me@jaymcdoniel.dev",
+    "url": "https://github.com/jmcdo29"
+  },
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@nestjs/common": "^7.0.0",
+    "@nestjs/core": "^7.0.0",
+    "rxjs": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": false
+    },
+    "@nestjs/core": {
+      "optional": false
+    },
+    "rxjs": {
+      "optional": false
+    }
+  }
+}
