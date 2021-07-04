@@ -21,36 +21,83 @@ describe('Or Guard Integration Test', () => {
     sync     | syncExpect
     ${true}  | ${true}
     ${false} | ${false}
-  `('sync val $sync syncExpect $syncExpect', ({ sync, syncExpect }) => {
-    describe.each`
-      prom     | promExpect
-      ${true}  | ${true}
-      ${false} | ${syncExpect ?? false}
-    `('prom val $prom promExpect $promExpect', ({ prom, promExpect }) => {
+  `(
+    'sync val $sync syncExpect $syncExpect',
+    ({ sync, syncExpect }: { sync: boolean; syncExpect: boolean }) => {
       describe.each`
-        obs      | obsExpect
+        prom     | promExpect
         ${true}  | ${true}
-        ${false} | ${promExpect ?? false}
-      `('obs val $obs final expect $obsExpect', ({ obs, obsExpect }) => {
+        ${false} | ${syncExpect ?? false}
+      `(
+        'prom val $prom promExpect $promExpect',
+        ({ prom, promExpect }: { prom: boolean; promExpect: boolean }) => {
+          describe.each`
+            obs      | obsExpect
+            ${true}  | ${true}
+            ${false} | ${promExpect ?? false}
+          `(
+            'obs val $obs final expect $obsExpect',
+            ({ obs, obsExpect }: { obs: boolean; obsExpect: boolean }) => {
+              let app: INestApplication;
+              beforeEach(async () => {
+                const testMod = await moduleConfig
+                  .overrideProvider(SyncGuard)
+                  .useValue({ canActivate: () => sync })
+                  .overrideProvider(PromGuard)
+                  .useValue({ canActivate: async () => prom })
+                  .overrideProvider(ObsGuard)
+                  .useValue({ canActivate: () => of(obs) })
+                  .compile();
+                app = testMod.createNestApplication();
+                await app.init();
+              });
+              afterEach(async () => {
+                await app.close();
+              });
+              it(`should make a request to the server and${
+                obsExpect ? ' ' : ' not '
+              }succeed`, async () => {
+                return supertest(app.getHttpServer())
+                  .get('/')
+                  .expect(obsExpect ? 200 : 403);
+              });
+            }
+          );
+        }
+      );
+      describe('Using the throw guards', () => {
         let app: INestApplication;
         beforeEach(async () => {
           const testMod = await moduleConfig
             .overrideProvider(SyncGuard)
             .useValue({ canActivate: () => sync })
-            .overrideProvider(PromGuard)
-            .useValue({ canActivate: async () => prom })
-            .overrideProvider(ObsGuard)
-            .useValue({ canActivate: () => of(obs) })
             .compile();
           app = testMod.createNestApplication();
           await app.init();
         });
-        it(`should make a request to the server and succeed: ${obsExpect}`, async () => {
-          return supertest(app.getHttpServer())
-            .get('/')
-            .expect(obsExpect ? 200 : 403);
+        afterEach(async () => {
+          await app.close();
+        });
+        describe('do-not-throw', () => {
+          it(`should return with ${syncExpect ? 200 : 403}`, async () => {
+            return supertest(app.getHttpServer())
+              .get('/do-not-throw')
+              .expect(syncExpect ? 200 : 403);
+          });
+        });
+        describe('throw', () => {
+          it('should throw an error regardless of syncExpect', async () => {
+            return supertest(app.getHttpServer())
+              .get('/throw')
+              .expect(401)
+              .expect(({ body }) => {
+                expect(body).toEqual(
+                  expect.objectContaining({ message: 'ThrowGuard' })
+                );
+              });
+          });
         });
       });
-    });
-  });
+    }
+  );
 });
