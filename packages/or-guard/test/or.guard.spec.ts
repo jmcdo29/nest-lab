@@ -54,6 +54,20 @@ describe('Or Guard Integration Test', () => {
               afterEach(async () => {
                 await app.close();
               });
+              /**
+               * OrGuard([SyncGuard, PromGuard, ObsGuard])
+               *
+               * | Sync | Prom | Obs | Final |
+               * |  - | - | - | - |
+               * | true | true | true | true |
+               * | true | true | false | true |
+               * | true | false | true | true |
+               * | true | false | false | true |
+               * | false | true | true | true |
+               * | false | true | false | true |
+               * | false | false | true | true |
+               * | false  | false | false | false |
+               */
               it(`should make a request to the server and${
                 obsExpect ? ' ' : ' not '
               }succeed`, async () => {
@@ -79,6 +93,14 @@ describe('Or Guard Integration Test', () => {
           await app.close();
         });
         describe('do-not-throw', () => {
+          /**
+           * OrGuard([SyncGuard, ThrowGuard])
+           *
+           * | Sync | Throw | Final |
+           * | - | - | - |
+           * | true | UnauthorizedException | true |
+           * | false | UnauthorizedException | false |
+           */
           it(`should return with ${syncExpect ? 200 : 403}`, async () => {
             return supertest(app.getHttpServer())
               .get('/do-not-throw')
@@ -86,6 +108,14 @@ describe('Or Guard Integration Test', () => {
           });
         });
         describe('throw', () => {
+          /**
+           * OrGuard([SyncGuard, ThrowGuard], { throwOnFirstError: true})
+           *
+           * | Sync | Throw | Final |
+           * | - | - | - |
+           * | true | UnauthorizedException | false |
+           * | false | UnauthorizedException | false |
+           */
           it('should throw an error regardless of syncExpect', async () => {
             return supertest(app.getHttpServer())
               .get('/throw')
