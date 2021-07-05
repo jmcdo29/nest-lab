@@ -6,7 +6,7 @@
     "email": "me@jaymcdoniel.dev",
     "url": "https://github.com/jmcdo29"
   },
-  "version": "0.0.1",
+  "version": "1.0.0",
   "peerDependencies": {
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
