@@ -57,9 +57,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Agent 1
     timeout-minutes: 60
-  strategy:
-    matrix:
-      agent: [ 1, 2, 3 ]
+    strategy:
+      matrix:
+        agent: [ 1, 2, 3 ]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
