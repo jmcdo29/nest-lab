@@ -21,6 +21,8 @@ jobs:
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v1
       - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install deps
@@ -43,6 +45,8 @@ jobs:
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v1
       - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install deps
