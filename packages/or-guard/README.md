@@ -22,6 +22,8 @@ Second, make sure **none** of these guards are `REQUEST` or `TRANSIENT` scoped, 
 
 Third, make use of it! The `OrGuard` takes in an array of guard to use for the first parameter, and an optional second parameter for options as described below.
 
+> **important**: for Nest v7, use `@nest-lab/or-guard@1.0.0`, for Nest v8, please use v2
+
 ```ts
 OrGuard(guards: CanActivate[], orGuardOptions?: OrGuardOptions): CanActivate
 ```
