@@ -43,8 +43,14 @@
           "executor": "@nrwl/workspace:run-commands",
           "options": {
             "cwd": "dist/packages/or-guard",
-            "command": "pnpm publish"
-          }
+            "command": "pnpm publish --dry-run"
+          },
+          "dependsOn": [
+            {
+              "target": "build",
+              "projects": "self"
+            }
+          ]
         }
       }
     }
