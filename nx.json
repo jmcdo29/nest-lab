@@ -28,14 +28,5 @@
         "projects": "dependencies"
       }
     ]
-  },
-  "projects": {
-    "or-guard": {
-      "tags": []
-    }
-  },
-  "workspaceLayout": {
-    "appsDir": "packages",
-    "libsDir": "packages"
   }
 }

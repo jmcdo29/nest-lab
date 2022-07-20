@@ -5,7 +5,6 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "no-unused-vars": ["error", { "varsIgnorePattern": ["^_"] }]
       }
     },
     {
