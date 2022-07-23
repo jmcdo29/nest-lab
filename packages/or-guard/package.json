@@ -10,6 +10,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/jmcdo29/nest-lab",
+    "directory": "packages/or-guard"
+  },
   "peerDependencies": {
     "@nestjs/common": " ^8.0.0 || ^9.0.0",
     "@nestjs/core": "^8.0.0 || ^9.0.0",
