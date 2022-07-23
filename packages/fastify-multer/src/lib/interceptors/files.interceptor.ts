@@ -25,6 +25,7 @@ export function FilesInterceptor(
     protected multer: MulterInstance;
 
     constructor(
+      @Optional()
       @Inject(MULTER_MODULE_OPTIONS)
       options: MulterModuleOptions = {}
     ) {
