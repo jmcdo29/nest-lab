@@ -23,7 +23,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "release": "nx affected --target=publish --with-deps"
+    "release": "pnpm changeset publish"
   },
   "private": true,
   "dependencies": {},
