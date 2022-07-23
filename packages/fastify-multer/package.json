@@ -1,6 +1,28 @@
 {
   "name": "@nest-lab/fastify-multer",
   "version": "0.0.1",
+  "description": "A File Upload package for NestJS when using fastify",
+  "keywords": [
+    "fastify",
+    "nestjs",
+    "file upload"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Jay McDoniel",
+    "email": "me@jaymcdoniel.dev"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/jmcdo29/nest-lab",
+    "directory": "packages/fastify-multer"
+  },
+  "bugs": {
+    "url": "https://github.com/jmcdo29/nest-lab/issues"
+  },
   "type": "commonjs",
   "dependencies": {
     "fastify-multer": "2.0.3"
