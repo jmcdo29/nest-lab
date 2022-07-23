@@ -1,5 +1,11 @@
 # @nest-lab/or-guard
 
+## 2.1.0
+
+### Minor Changes
+
+- 4f15fe7: Support Nest v9
+
 ## 2.0.0
 
 ### Major Changes
