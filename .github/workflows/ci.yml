@@ -28,9 +28,9 @@ jobs:
       - name: Install deps
         run: pnpm i --frozen-lockfile=false
       - name: Build Projects
-        run: pnpm nx affected -- --target=build --parallel --max-parallel=3
+        run: pnpm nx affected --target=build --parallel --max-parallel=3
       - name: Test Projects
-        run: pnpm nx affected -- --target=test --parallel --max-parallel=2
+        run: pnpm nx affected --target=test --parallel --max-parallel=2
       - run: pnpm nx-cloud stop-all-agents
       - name: Tag main branch if all jobs succeed
         uses: nrwl/nx-tag-successful-ci-run@v1
@@ -52,9 +52,9 @@ jobs:
       - name: Install deps
         run: pnpm i --frozen-lockfile=false
       - name: Build Projects
-        run: pnpm nx affected -- --target=build --parallel --max-parallel=3
+        run: pnpm nx affected --target=build --parallel --max-parallel=3
       - name: Test Projects
-        run: pnpm nx affected -- --target=test --parallel --max-parallel=2
+        run: pnpm nx affected --target=test --parallel --max-parallel=2
       - run: pnpm nx-cloud stop-all-agents
   agents:
     runs-on: ubuntu-latest
