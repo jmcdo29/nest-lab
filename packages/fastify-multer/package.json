@@ -29,7 +29,7 @@
   },
   "peerDependencies": {
     "@nestjs/common": "^9.0.0",
-    "@nestjs/platform-fsatify": "^9.0.0",
+    "@nestjs/platform-fastify": "^9.0.0",
     "rxjs": "^7.0.0"
   },
   "peerDependenciesMeta": {
