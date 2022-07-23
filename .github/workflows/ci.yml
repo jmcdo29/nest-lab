@@ -22,7 +22,7 @@ jobs:
         uses: nrwl/nx-set-shas@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 18.x
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install deps
@@ -46,7 +46,7 @@ jobs:
         uses: nrwl/nx-set-shas@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 18.x
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install deps
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 18.x
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install deps

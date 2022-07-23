@@ -1,0 +1,24 @@
+{
+  "name": "@nest-lab/fastify-multer",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "dependencies": {
+    "fastify-multer": "2.0.3"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/platform-fsatify": "^9.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": false
+    },
+    "@nestjs/platform-fastify": {
+      "optional": false
+    },
+    "rxjs": {
+      "optional": false
+    }
+  }
+}

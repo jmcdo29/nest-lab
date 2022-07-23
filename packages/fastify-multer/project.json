@@ -1,0 +1,47 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/fastify-multer/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/fastify-multer",
+        "tsConfig": "packages/fastify-multer/tsconfig.lib.json",
+        "packageJson": "packages/fastify-multer/package.json",
+        "main": "packages/fastify-multer/src/index.ts",
+        "assets": ["packages/fastify-multer/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "dist/packages/fastify-multer",
+        "command": "pnpm publish"
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/fastify-multer/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node -r @swc/register --test packages/fastify-multer/test/file-upload.spec.ts"
+      }
+    }
+  },
+  "tags": []
+}

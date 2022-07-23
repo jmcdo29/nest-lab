@@ -26,15 +26,13 @@
     "release": "nx affected --target=publish --with-deps"
   },
   "private": true,
-  "dependencies": {
-    "reflect-metadata": "^0.1.13",
-    "tslib": "^2.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@changesets/cli": "^2.23.2",
     "@nestjs/common": "^9.0.5",
     "@nestjs/core": "^9.0.5",
     "@nestjs/platform-express": "^9.0.5",
+    "@nestjs/platform-fastify": "^9.0.5",
     "@nestjs/schematics": "^9.0.1",
     "@nestjs/testing": "^9.0.5",
     "@nrwl/cli": "^14.4.3",
@@ -45,21 +43,28 @@
     "@nrwl/nx-cloud": "latest",
     "@nrwl/tao": "^14.4.3",
     "@nrwl/workspace": "^14.4.3",
+    "@swc/core": "^1.2.218",
+    "@swc/register": "^0.1.10",
     "@types/jest": "26.0.8",
-    "@types/node": "14.14.33",
+    "@types/node": "^18",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "5.30.7",
     "@typescript-eslint/parser": "5.30.7",
     "dotenv": "8.2.0",
     "eslint": "8.20.0",
     "eslint-config-prettier": "8.1.0",
+    "fastify": "^4.3.0",
+    "fastify-multer": "^2.0.3",
     "jest": "27.0.3",
     "nx": "^14.4.3",
+    "pactum": "^3.1.13",
     "prettier": "^2.7.1",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~7.2.0",
     "supertest": "^6.2.4",
+    "tslib": "^2.4.0",
     "ts-jest": "27.0.3",
-    "ts-node": "~9.1.1",
+    "ts-node": "~10.9.1",
     "typescript": "~4.7.4"
   }
 }
