@@ -1,5 +1,6 @@
 {
   "name": "@nest-lab/or-guard",
+  "license": "MIT",
   "description": "A mixin guard that allows for one of N guards to pass for the request to be considers authenticated.",
   "author": {
     "name": "Jay McDoniel",
