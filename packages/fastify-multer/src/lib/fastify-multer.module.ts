@@ -1,26 +1,11 @@
-import { Module, OnApplicationBootstrap } from '@nestjs/common';
-import { HttpAdapterHost } from '@nestjs/core';
-import { FastifyAdapter } from '@nestjs/platform-fastify';
-import multer from 'fastify-multer';
+import { Module } from '@nestjs/common';
+import { FastifyCoreModule } from './fastify-multer-core.module';
 import { ConfigurableModuleClass } from './fastify-multer.module-definition';
 
 @Module({
+  imports: [FastifyCoreModule],
   controllers: [],
   providers: [],
   exports: [],
 })
-export class FastifyMulterModule
-  extends ConfigurableModuleClass
-  implements OnApplicationBootstrap
-{
-  constructor(private readonly appHost: HttpAdapterHost<FastifyAdapter>) {
-    super();
-  }
-
-  onApplicationBootstrap() {
-    const fastifyInstance = this.appHost.httpAdapter.getInstance();
-    if (!fastifyInstance.hasContentTypeParser('multipart/form-data')) {
-      fastifyInstance.register(multer.contentParser);
-    }
-  }
-}
+export class FastifyMulterModule extends ConfigurableModuleClass {}
