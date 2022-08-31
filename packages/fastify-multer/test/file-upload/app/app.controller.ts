@@ -13,7 +13,7 @@ import {
   FileInterceptor,
   FilesInterceptor,
   NoFilesInterceptor,
-} from '../../src';
+} from '../../../src';
 
 @Controller()
 export class AppController {

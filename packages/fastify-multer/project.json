@@ -39,7 +39,12 @@
     "test": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "node -r @swc/register --test packages/fastify-multer/test/file-upload.spec.ts"
+        "command": "node -r @swc/register --test packages/fastify-multer/test/index.spec.ts"
+      },
+      "configurations": {
+        "local": {
+          "command": "node -r @swc/register packages/fastify-multer/test/index.spec.ts"
+        }
       }
     }
   },
