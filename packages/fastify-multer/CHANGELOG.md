@@ -1,5 +1,11 @@
 # @nest-lab/fastify-multer
 
+## 1.0.2
+
+### Patch Changes
+
+- 19eb008: Options now persist via being set in the module
+
 ## 1.0.1
 
 ### Patch Changes
