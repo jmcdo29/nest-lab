@@ -1,6 +1,6 @@
 {
   "name": "@nest-lab/fastify-multer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A File Upload package for NestJS when using fastify",
   "keywords": [
     "fastify",
