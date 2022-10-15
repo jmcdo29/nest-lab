@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import multer from 'fastify-multer';
 import { Observable } from 'rxjs';
-import { MULTER_MODULE_OPTIONS } from '../files.constants';
+import { MULTER_OPTIONS } from '../files.constants';
 import { MulterModuleOptions } from '../interfaces';
 import { transformException } from '../multer/multer.utils';
 
@@ -21,7 +21,7 @@ export function NoFilesInterceptor(): Type<NestInterceptor> {
 
     constructor(
       @Optional()
-      @Inject(MULTER_MODULE_OPTIONS)
+      @Inject(MULTER_OPTIONS)
       options: MulterModuleOptions = {}
     ) {
       this.multer = multer({
