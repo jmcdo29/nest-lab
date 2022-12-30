@@ -1,5 +1,12 @@
 # @nest-lab/fastify-multer
 
+## 1.1.0
+
+### Minor Changes
+
+- d72a963: export multer interface and use options from fastify-multer
+- 0b750cd: add file interface from fastify multer
+
 ## 1.0.2
 
 ### Patch Changes
