@@ -1,8 +1,12 @@
 {
   "name": "@nest-lab/fastify-multer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A File Upload package for NestJS when using fastify",
-  "keywords": ["fastify", "nestjs", "file upload"],
+  "keywords": [
+    "fastify",
+    "nestjs",
+    "file upload"
+  ],
   "license": "MIT",
   "author": {
     "name": "Jay McDoniel",

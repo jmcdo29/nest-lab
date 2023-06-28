@@ -1,5 +1,11 @@
 # @nest-lab/or-guard
 
+## 2.2.0
+
+### Minor Changes
+
+- cb1b1ee: Update peer deps to support Nest v10. No code changes
+
 ## 2.1.0
 
 ### Minor Changes

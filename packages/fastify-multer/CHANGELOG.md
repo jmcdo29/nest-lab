@@ -1,5 +1,11 @@
 # @nest-lab/fastify-multer
 
+## 1.2.0
+
+### Minor Changes
+
+- 2095ccf: Update peer deps to support Nest v10. No code changes
+
 ## 1.1.0
 
 ### Minor Changes
