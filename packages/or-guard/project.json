@@ -1,0 +1,45 @@
+{
+  "name": "or-guard",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/or-guard/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/or-guard/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/or-guard"],
+      "options": {
+        "jestConfig": "packages/or-guard/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/or-guard",
+        "tsConfig": "packages/or-guard/tsconfig.lib.json",
+        "packageJson": "packages/or-guard/package.json",
+        "main": "packages/or-guard/src/index.ts",
+        "assets": ["packages/or-guard/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/packages/or-guard",
+        "command": "pnpm publish"
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
+    }
+  }
+}

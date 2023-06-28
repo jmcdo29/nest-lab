@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"],
-      "@nest-lab/fastify-multer": ["packages/fastify-multer/src/index.ts"]
+      "@nest-lab/fastify-multer": ["packages/fastify-multer/src/index.ts"],
+      "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
