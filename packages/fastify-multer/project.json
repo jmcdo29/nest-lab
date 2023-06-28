@@ -1,4 +1,5 @@
 {
+  "name": "fastify-multer",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/fastify-multer/src",
   "projectType": "library",
@@ -17,27 +18,26 @@
       }
     },
     "publish": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "cwd": "dist/packages/fastify-multer",
         "command": "pnpm publish"
       },
       "dependsOn": [
         {
-          "target": "build",
-          "projects": "self"
+          "target": "build"
         }
       ]
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/fastify-multer/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "node -r @swc/register --test packages/fastify-multer/test/index.spec.ts"
       },
