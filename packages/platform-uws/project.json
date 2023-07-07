@@ -1,0 +1,52 @@
+{
+  "name": "platform-uws",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/platform-uws/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/platform-uws",
+        "tsConfig": "packages/platform-uws/tsconfig.lib.json",
+        "packageJson": "packages/platform-uws/package.json",
+        "main": "packages/platform-uws/src/index.ts",
+        "assets": ["packages/platform-uws/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/packages/platform-uws",
+        "command": "pnpm publish"
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/platform-uws/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node -r @swc/register --test packages/platform-uws/test/index.spec.ts"
+      },
+      "configurations": {
+        "local": {
+          "command": "node -r @swc/register packages/platform-uws/test/index.spec.ts"
+        }
+      }
+    }
+  },
+  "tags": []
+}

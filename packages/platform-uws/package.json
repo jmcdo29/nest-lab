@@ -1,0 +1,63 @@
+{
+  "name": "@nest-lab/platform-uws",
+  "version": "1.0.0-beta",
+  "description": "uWebSockets.js HTTP and Io adapters",
+  "keywords": [
+    "uws",
+    "uWebSockets",
+    "uWebSockets.js",
+    "uNetworking",
+    "socket.io",
+    "express",
+    "nestjs"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Michael J Feher",
+    "email": "mike@telluric.guru"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/jmcdo29/nest-lab",
+    "directory": "packages/platform-uws"
+  },
+  "bugs": {
+    "url": "https://github.com/jmcdo29/nest-lab/issues"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "http-status-codes": "^2.2.0",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.30.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9.0.0 || ^10.0.0",
+    "@nestjs/core": "^9.0.0 || ^10.0.0",
+    "@nestjs/platform-express": "^9.0.0 || ^10.0.0",
+    "@nestjs/platform-socket.io": "^9.0.0 || ^10.0.0",
+    "@nestjs/websockets": "^9.0.0 || ^10.0.0",
+    "socket.io": "^4.7.1"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": false
+    },
+    "@nestjs/core": {
+      "optional": false
+    },
+    "@nestjs/platform-express": {
+      "optional": false
+    },
+    "@nestjs/platform-socket.io": {
+      "optional": false
+    },
+    "@nestjs/websockets": {
+      "optional": false
+    },
+    "socket.io": {
+      "optional": false
+    }
+  }
+}
