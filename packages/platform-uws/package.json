@@ -1,6 +1,6 @@
 {
   "name": "@nest-lab/platform-uws",
-  "version": "1.0.0-beta",
+  "version": "0.0.0",
   "description": "uWebSockets.js HTTP and Io adapters",
   "keywords": [
     "uws",
