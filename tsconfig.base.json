@@ -8,15 +8,17 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "target": "es2021",
+    "module": "CommonJS",
+    "lib": ["ES2021"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
       "@nest-lab/fastify-multer": ["packages/fastify-multer/src/index.ts"],
-      "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"]
+      "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"],
+      "@nest-lab/typeschema": ["packages/typeschema/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

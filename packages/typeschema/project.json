@@ -1,0 +1,53 @@
+{
+  "name": "typeschema",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/typeschema/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/typeschema",
+        "tsConfig": "packages/typeschema/tsconfig.lib.json",
+        "packageJson": "packages/typeschema/package.json",
+        "main": "packages/typeschema/src/index.ts",
+        "assets": ["packages/typeschema/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/typeschema/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/typeschema/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/packages/typeschema",
+        "command": "pnpm publish"
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
+    }
+  },
+  "tags": []
+}

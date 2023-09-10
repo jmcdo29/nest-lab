@@ -1,0 +1,28 @@
+{
+  "name": "@nest-lab/typeschema",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "files": [
+    "src"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@decs/typeschema": "^0.10.2"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": false
+    },
+    "@nestjs/core": {
+      "optional": false
+    },
+    "reflect-metadata": {
+      "optional": false
+    }
+  }
+}
