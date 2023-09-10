@@ -13,7 +13,7 @@
     "url": "https://github.com/jmcdo29/nest-lab",
     "directory": "packages/typeschema"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "commonjs",
   "files": [
     "src"
