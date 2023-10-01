@@ -55,6 +55,10 @@ describe('TypeschemaPipe integration test', () => {
       .post(`/${endpoint}`)
       .withJson({ foo: endpoint, bar: true })
       .expectStatus(400)
+      .expectJsonLike({
+        error: 'Bad Request',
+        statusCode: 400,
+      })
       .toss();
   });
 });
