@@ -1,5 +1,16 @@
 # @nest-lab/typeschema
 
+## 0.2.0
+
+### Minor Changes
+
+- 5e274ec: Add a new options parameter to the typeschema validation pipe
+
+  BREAKING CHANGE: the logger is now the **second** parameter of the validation
+  pipe with the options being the first. If you use `new ValidationPipe` and pass
+  in the logger, you'll need to pass in an empty object or `undefined` as the
+  first parameter.
+
 ## 0.1.1
 
 ### Patch Changes
