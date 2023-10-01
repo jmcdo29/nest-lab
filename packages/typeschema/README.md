@@ -58,9 +58,14 @@ or `@Body(ValidationPipe)` to bind it to a single parameter.
 
 ## Options for the pipe
 
-Coming soon! This is a work in progress integration, and I'll be happy to help
-make it better with community feedback. If there's things you want to see, make
-an issue with it for better visibility!
+Currently the only option is an `exceptionFactory` that takes in an array of
+`ValidationIssue` from the `@decs/typeschema` package and returns an `Error` to
+be thrown. By default, this array is passed directly to `BadRequestException`
+from `@nestjs/common`.
+
+If you want to pass the options you can via `new ValidationPipe`, or if you
+prefer to let Nest inject the options you can add them via the `TypeschemaOptions`
+injection token using a custom provider.
 
 ## Integration with OpenAPI
 
