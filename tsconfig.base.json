@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@nest-lab/fastify-multer": ["packages/fastify-multer/src/index.ts"],
+      "@nest-lab/injection-tokens": ["packages/injection-tokens/src/index.ts"],
       "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"],
       "@nest-lab/typeschema": ["packages/typeschema/src/index.ts"]
     }

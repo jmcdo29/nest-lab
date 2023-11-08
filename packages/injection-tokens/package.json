@@ -1,0 +1,11 @@
+{
+  "name": "@nest-lab/injection-tokens",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "devDependencies": {
+    "@nestjs/common": "10.2.8"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10.0.0"
+  }
+}
