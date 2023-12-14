@@ -27,6 +27,61 @@ describe('Or Guard Integration Test', () => {
       describe.each`
         prom     | promExpect
         ${true}  | ${true}
+        ${false} | ${false}
+      `(
+        'prom val $prom promExpect $promExpect',
+        ({ prom, promExpect }: { prom: boolean; promExpect: boolean }) => {
+          describe.each`
+            obs      | obsExpect
+            ${true}  | ${true}
+            ${false} | ${syncExpect && promExpect}
+          `(
+            'obs val $obs final expect $obsExpect',
+            ({ obs, obsExpect }: { obs: boolean; obsExpect: boolean }) => {
+              let app: INestApplication;
+              beforeEach(async () => {
+                const testMod = await moduleConfig
+                  .overrideProvider(SyncGuard)
+                  .useValue({ canActivate: () => sync })
+                  .overrideProvider(PromGuard)
+                  .useValue({ canActivate: async () => prom })
+                  .overrideProvider(ObsGuard)
+                  .useValue({ canActivate: () => of(obs) })
+                  .compile();
+                app = testMod.createNestApplication();
+                await app.init();
+              });
+              afterEach(async () => {
+                await app.close();
+              });
+              /**
+               * OrGuard([SyncGuard, PromGuard, ObsGuard])
+               *
+               * | Sync | Prom | Obs | Final |
+               * |  - | - | - | - |
+               * | true | true | true | true |
+               * | true | true | false | true |
+               * | true | false | true | true |
+               * | true | false | false | false |
+               * | false | true | true | true |
+               * | false | true | false | false |
+               * | false | false | true | true |
+               * | false  | false | false | false |
+               */
+              it(`should make a request to the server and${
+                obsExpect ? ' ' : ' not '
+              }succeed`, async () => {
+                return supertest(app.getHttpServer())
+                  .get('/logical-and')
+                  .expect(obsExpect ? 200 : 403);
+              });
+            }
+          );
+        }
+      );
+      describe.each`
+        prom     | promExpect
+        ${true}  | ${true}
         ${false} | ${syncExpect ?? false}
       `(
         'prom val $prom promExpect $promExpect',

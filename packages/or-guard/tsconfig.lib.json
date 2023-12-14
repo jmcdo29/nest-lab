@@ -8,5 +8,5 @@
     "target": "es2021"
   },
   "exclude": ["**/*.spec.ts", "jest.config.ts"],
-  "include": ["**/*.ts"]
+  "include": ["src/**/*.ts"]
 }

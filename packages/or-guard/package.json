@@ -11,6 +11,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "repository": {
     "type": "github",
     "url": "https://github.com/jmcdo29/nest-lab",
