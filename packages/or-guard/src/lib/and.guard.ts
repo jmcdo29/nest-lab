@@ -15,17 +15,17 @@ import {
   OperatorFunction,
   throwError,
 } from 'rxjs';
-import { catchError, last, mergeMap, takeWhile } from 'rxjs/operators';
+import { catchError, last, mergeMap, every } from 'rxjs/operators';
 
 interface OrGuardOptions {
   throwOnFirstError?: boolean;
 }
 
-export function OrGuard(
+export function AndGuard(
   guards: Array<Type<CanActivate> | InjectionToken>,
   orGuardOptions?: OrGuardOptions
 ) {
-  class OrMixinGuard implements CanActivate {
+  class AndMixinGuard implements CanActivate {
     private guards: CanActivate[] = [];
     constructor(@Inject(ModuleRef) private readonly modRef: ModuleRef) {}
     canActivate(context: ExecutionContext): Observable<boolean> {
@@ -37,7 +37,7 @@ export function OrGuard(
         mergeMap((obs) => {
           return obs.pipe(this.handleError());
         }),
-        takeWhile((val) => val === false, true),
+        every((val) => val === true),
         last()
       );
     }
@@ -80,6 +80,6 @@ export function OrGuard(
     }
   }
 
-  const Guard = mixin(OrMixinGuard);
+  const Guard = mixin(AndMixinGuard);
   return Guard as Type<CanActivate>;
 }

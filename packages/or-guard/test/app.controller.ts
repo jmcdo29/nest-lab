@@ -26,4 +26,10 @@ export class AppController {
   getThrowGuardThrow() {
     return this.message;
   }
+
+  @UseGuards(OrGuard(['SyncAndProm', ObsGuard]))
+  @Get('logical-and')
+  getLogicalAnd() {
+    return this.message;
+  }
 }
