@@ -8,7 +8,7 @@ import { ObsGuard } from './obs.guard';
 import { PromGuard } from './prom.guard';
 import { SyncGuard } from './sync.guard';
 
-describe('Or Guard Integration Test', () => {
+describe('OrGuard and AndGuard Integration Test', () => {
   let moduleConfig: TestingModuleBuilder;
 
   beforeEach(() => {
@@ -55,7 +55,7 @@ describe('Or Guard Integration Test', () => {
                 await app.close();
               });
               /**
-               * OrGuard([SyncGuard, PromGuard, ObsGuard])
+               * OrGuard([AndGuard([SyncGuard, PromGuard]), ObsGuard])
                *
                * | Sync | Prom | Obs | Final |
                * |  - | - | - | - |
@@ -185,4 +185,22 @@ describe('Or Guard Integration Test', () => {
       });
     }
   );
+
+  describe('AndGuard with options', () => {
+    let app: INestApplication;
+    beforeAll(async () => {
+      const testMod = await moduleConfig.compile();
+      app = testMod.createNestApplication();
+      await app.init();
+    });
+    afterAll(async () => {
+      await app.close();
+    });
+    it('should throw an error if not ran sequentially', async () => {
+      return supertest(app.getHttpServer()).get('/set-user-fail').expect(403);
+    });
+    it('should not throw an error if ran sequentially', async () => {
+      return supertest(app.getHttpServer()).get('/set-user-pass').expect(200);
+    });
+  });
 });

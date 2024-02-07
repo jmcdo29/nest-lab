@@ -90,17 +90,20 @@ And this library will set up the handling of the logic for
 under the hood.
 
 ```ts
-AndGuard(guards: Array<Type<CanActivate> | InjectionToken>, orGuardOptions?: OrGuardOptions): CanActivate
+AndGuard(guards: Array<Type<CanActivate> | InjectionToken>, andGuardOptions?: AndGuardOptions): CanActivate
 ```
 
 - `guards`: an array of guards or injection tokens for the `AndGuard` to resolve
   and test
-- `orGuardOptions`: an optional object with properties to modify how the
-  `OrGuard` functions
+- `andGuardOptions`: an optional object with properties to modify how the
+  `AndGuard` functions
 
 ```ts
-interface OrGuardOptions {
+interface AndGuardOptions {
+  // immediately stop all other guards and throw an error
   throwOnFirstError?: boolean;
+  // run the guards in order they are declared in the array rather than in parallel
+  sequential?: boolean;
 }
 ```
 
