@@ -1,5 +1,11 @@
 # @nest-lab/or-guard
 
+## 2.4.0
+
+### Minor Changes
+
+- 3a767b5: Allow for AndGuard guards to be ran in sequential order
+
 ## 2.3.0
 
 ### Minor Changes
