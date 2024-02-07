@@ -1,8 +1,10 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 
-import { OrGuard } from '../src';
+import { AndGuard, OrGuard } from '../src';
 import { ObsGuard } from './obs.guard';
 import { PromGuard } from './prom.guard';
+import { ReadUserGuard } from './read-user.guard';
+import { SetUserGuard } from './set-user.guard';
 import { SyncGuard } from './sync.guard';
 import { ThrowGuard } from './throw.guard';
 
@@ -30,6 +32,18 @@ export class AppController {
   @UseGuards(OrGuard(['SyncAndProm', ObsGuard]))
   @Get('logical-and')
   getLogicalAnd() {
+    return this.message;
+  }
+
+  @UseGuards(AndGuard([SetUserGuard, ReadUserGuard]))
+  @Get('set-user-fail')
+  getSetUserFail() {
+    return this.message;
+  }
+
+  @UseGuards(AndGuard([SetUserGuard, ReadUserGuard], { sequential: true }))
+  @Get('set-user-pass')
+  getSetUserPass() {
     return this.message;
   }
 }

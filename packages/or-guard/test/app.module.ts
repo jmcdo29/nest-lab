@@ -6,6 +6,8 @@ import { ObsGuard } from './obs.guard';
 import { PromGuard } from './prom.guard';
 import { SyncGuard } from './sync.guard';
 import { ThrowGuard } from './throw.guard';
+import { SetUserGuard } from './set-user.guard';
+import { ReadUserGuard } from './read-user.guard';
 
 @Module({
   controllers: [AppController],
@@ -14,6 +16,8 @@ import { ThrowGuard } from './throw.guard';
     SyncGuard,
     PromGuard,
     ThrowGuard,
+    SetUserGuard,
+    ReadUserGuard,
     {
       provide: 'SyncAndProm',
       useClass: AndGuard([SyncGuard, PromGuard]),
