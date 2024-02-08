@@ -28,8 +28,8 @@
     "fastify-multer": "2.0.3"
   },
   "peerDependencies": {
-    "@nestjs/common": "^9.0.0 || ^10.0.0",
-    "@nestjs/platform-fastify": "^9.0.0 || ^10.0.0",
+    "@nestjs/common": "^9.0.0 || ^10.0.0 || ^10.30.0",
+    "@nestjs/platform-fastify": "^9.0.0 || ^10.0.0 || ^10.30.0",
     "rxjs": "^7.0.0"
   },
   "peerDependenciesMeta": {
