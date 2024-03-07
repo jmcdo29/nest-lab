@@ -1,5 +1,12 @@
 # @nest-lab/or-guard
 
+## 2.4.1
+
+### Patch Changes
+
+- 7972281: Use `{strict: false}` when calling modRef.get() to ensure guards can
+  come from other modules
+
 ## 2.4.0
 
 ### Minor Changes
