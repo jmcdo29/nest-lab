@@ -29,7 +29,9 @@ export function OrGuard(
     private guards: CanActivate[] = [];
     constructor(@Inject(ModuleRef) private readonly modRef: ModuleRef) {}
     canActivate(context: ExecutionContext): Observable<boolean> {
-      this.guards = guards.map((guard) => this.modRef.get(guard));
+      this.guards = guards.map((guard) =>
+        this.modRef.get(guard, { strict: false })
+      );
       const canActivateReturns: Array<Observable<boolean>> = this.guards.map(
         (guard) => this.deferGuard(guard, context)
       );
