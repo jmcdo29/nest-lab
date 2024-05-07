@@ -18,7 +18,7 @@ export class ValidationPipe implements PipeTransform {
   constructor(
     @Optional()
     @Inject(TypeschemaOptions)
-    private readonly options: ValidationPipeOptions,
+    private readonly options?: ValidationPipeOptions,
     @Optional() protected readonly logger?: Logger
   ) {}
   async transform(value: unknown, metadata: ArgumentMetadata) {
