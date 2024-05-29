@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, UnauthorizedException, UseGuards } from '@nestjs/common';
 
 import { AndGuard, OrGuard } from '../src';
 import { ObsGuard } from './obs.guard';
@@ -32,6 +32,18 @@ export class AppController {
   @UseGuards(OrGuard([SyncGuard, ThrowGuard], { throwLastError: true }))
   @Get('throw-last')
   getThrowGuardThrowLast() {
+    return this.message;
+  }
+
+  @UseGuards(OrGuard([ThrowGuard, ThrowGuard], { throwError: new UnauthorizedException('Should provide either "x-api-key" header or query') }))
+  @Get('throw-custom')
+  getThrowGuardThrowCustom() {
+    return this.message;
+  }
+
+  @UseGuards(OrGuard([ThrowGuard, ThrowGuard], { throwError: (errors) => new UnauthorizedException((errors as { message?: string }[]).filter(error => error.message).join(', ')) }))
+  @Get('throw-custom-narrow')
+  getThrowGuardThrowCustomNarrow() {
     return this.message;
   }
 

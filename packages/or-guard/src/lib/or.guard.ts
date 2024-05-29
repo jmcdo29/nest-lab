@@ -16,13 +16,14 @@ import {
   of,
   OperatorFunction,
   throwError,
-  pipe,
+  pipe, tap
 } from 'rxjs';
 import { catchError, last, mergeMap, takeWhile } from 'rxjs/operators';
 
 interface OrGuardOptions {
   throwOnFirstError?: boolean;
   throwLastError?: boolean;
+  throwError?: object | ((errors: unknown[]) => unknown)
 }
 
 export function OrGuard(
@@ -39,13 +40,25 @@ export function OrGuard(
       const canActivateReturns: Array<Observable<boolean>> = this.guards.map(
         (guard) => this.deferGuard(guard, context)
       );
+      const errors: unknown[] = [];
       return from(canActivateReturns).pipe(
-        mergeMap((obs) => {
-          return obs.pipe(this.handleError());
-        }),
+        mergeMap((obs) => obs.pipe(this.handleError())),
+        tap(({ error }) => errors.push(error)),
         takeWhile(({ result }) => result === false, true),
         last(),
-        concatMap(({ result, error }) => result === false && orGuardOptions?.throwLastError && error ? throwError(() => error) : of(result))
+        concatMap(({ result }) => {
+          if (result === false) {
+            if (orGuardOptions?.throwLastError) {
+              return throwError(() => errors.at(-1))
+            }
+
+            if (orGuardOptions?.throwError) {
+              return throwError(() => typeof orGuardOptions.throwError === 'function' ? orGuardOptions.throwError(errors) : orGuardOptions.throwError)
+            }
+          }
+
+          return of(result);
+        })
       );
     }
 
