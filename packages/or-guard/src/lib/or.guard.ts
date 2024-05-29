@@ -8,17 +8,22 @@ import {
 } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 import {
+  concatMap,
   defer,
   from,
+  map,
   Observable,
   of,
   OperatorFunction,
   throwError,
+  pipe, tap
 } from 'rxjs';
 import { catchError, last, mergeMap, takeWhile } from 'rxjs/operators';
 
 interface OrGuardOptions {
   throwOnFirstError?: boolean;
+  throwLastError?: boolean;
+  throwError?: object | ((errors: unknown[]) => unknown)
 }
 
 export function OrGuard(
@@ -35,12 +40,25 @@ export function OrGuard(
       const canActivateReturns: Array<Observable<boolean>> = this.guards.map(
         (guard) => this.deferGuard(guard, context)
       );
+      const errors: unknown[] = [];
       return from(canActivateReturns).pipe(
-        mergeMap((obs) => {
-          return obs.pipe(this.handleError());
-        }),
-        takeWhile((val) => val === false, true),
-        last()
+        mergeMap((obs) => obs.pipe(this.handleError())),
+        tap(({ error }) => errors.push(error)),
+        takeWhile(({ result }) => result === false, true),
+        last(),
+        concatMap(({ result }) => {
+          if (result === false) {
+            if (orGuardOptions?.throwLastError) {
+              return throwError(() => errors.at(-1))
+            }
+
+            if (orGuardOptions?.throwError) {
+              return throwError(() => typeof orGuardOptions.throwError === 'function' ? orGuardOptions.throwError(errors) : orGuardOptions.throwError)
+            }
+          }
+
+          return of(result);
+        })
       );
     }
 
@@ -60,13 +78,16 @@ export function OrGuard(
       });
     }
 
-    private handleError(): OperatorFunction<boolean, boolean> {
-      return catchError((err) => {
-        if (orGuardOptions?.throwOnFirstError) {
-          return throwError(() => err);
-        }
-        return of(false);
-      });
+    private handleError(): OperatorFunction<boolean, { result: boolean, error?: unknown }> {
+      return pipe(
+        catchError((error) => {
+          if (orGuardOptions?.throwOnFirstError) {
+            return throwError(() => error);
+          }
+          return of({ result: false, error });
+        }),
+        map((result) => typeof result === 'boolean' ? { result } : result)
+      );
     }
 
     private guardIsPromise(
