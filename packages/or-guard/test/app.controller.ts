@@ -29,6 +29,12 @@ export class AppController {
     return this.message;
   }
 
+  @UseGuards(OrGuard([SyncGuard, ThrowGuard], { throwLastError: true }))
+  @Get('throw-last')
+  getThrowGuardThrowLast() {
+    return this.message;
+  }
+
   @UseGuards(OrGuard(['SyncAndProm', ObsGuard]))
   @Get('logical-and')
   getLogicalAnd() {

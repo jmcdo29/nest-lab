@@ -182,6 +182,28 @@ describe('OrGuard and AndGuard Integration Test', () => {
               });
           });
         });
+        describe('throw-last', () => {
+          /**
+           * OrGuard([SyncGuard, ThrowGuard], { throwLastError: true})
+           *
+           * | Sync | Throw | Final |
+           * | - | - | - |
+           * | true | UnauthorizedException | false |
+           * | false | UnauthorizedException | false |
+           */
+          it('should throw the last error', async () => {
+            return supertest(app.getHttpServer())
+              .get('/throw-last')
+              .expect(sync ? 200 : 401)
+              .expect(({ body }) => {
+                if (!sync) {
+                  expect(body).toEqual(
+                    expect.objectContaining({ message: 'ThrowGuard' })
+                  );
+                }
+              });
+          });
+        });
       });
     }
   );
