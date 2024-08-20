@@ -5,17 +5,13 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["packages/or-guard/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/or-guard"],
       "options": {
-        "jestConfig": "packages/or-guard/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/or-guard/jest.config.ts"
       }
     },
     "build": {
@@ -26,7 +22,8 @@
         "tsConfig": "packages/or-guard/tsconfig.lib.json",
         "packageJson": "packages/or-guard/package.json",
         "main": "packages/or-guard/src/index.ts",
-        "assets": ["packages/or-guard/*.md"]
+        "assets": ["packages/or-guard/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "publish": {
