@@ -1,7 +1,4 @@
 {
-  "affected": {
-    "defaultBase": "main"
-  },
   "tasksRunnerOptions": {
     "default": {
       "options": {
@@ -61,5 +58,7 @@
       }
     }
   },
-  "nxCloudAccessToken": ""
+  "nxCloudAccessToken": "",
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }
