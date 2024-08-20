@@ -1,0 +1,22 @@
+[NX Daemon Server] - 2024-08-20T16:50:48.999Z - Started listening on: /tmp/76fbdef4d19d6acefd72/d.sock
+[NX Daemon Server] - 2024-08-20T16:50:49.000Z - [WATCHER]: Subscribed to changes within: /home/jay/Documents/code/projects/nest-lab (native)
+[NX Daemon Server] - 2024-08-20T16:50:49.008Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-20T16:50:49.008Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-20T16:50:49.009Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-20T16:50:49.009Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-08-20T16:50:49.010Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-08-20T16:50:49.010Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-08-20T16:50:49.010Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-08-20T16:50:49.010Z - [WATCHER]: Stopping the watcher for /home/jay/Documents/code/projects/nest-lab (sources)
+[NX Daemon Server] - 2024-08-20T16:50:49.010Z - [WATCHER]: Stopping the watcher for /home/jay/Documents/code/projects/nest-lab (outputs)
+[NX Daemon Server] - 2024-08-20T16:51:48.546Z - Started listening on: /tmp/76fbdef4d19d6acefd72/d.sock
+[NX Daemon Server] - 2024-08-20T16:51:48.548Z - [WATCHER]: Subscribed to changes within: /home/jay/Documents/code/projects/nest-lab (native)
+[NX Daemon Server] - 2024-08-20T16:51:48.552Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-20T16:51:48.553Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-20T16:51:48.554Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-20T16:51:48.554Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-08-20T16:51:48.555Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-08-20T16:51:48.555Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-08-20T16:51:48.555Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-08-20T16:51:48.555Z - [WATCHER]: Stopping the watcher for /home/jay/Documents/code/projects/nest-lab (sources)
+[NX Daemon Server] - 2024-08-20T16:51:48.555Z - [WATCHER]: Stopping the watcher for /home/jay/Documents/code/projects/nest-lab (outputs)
