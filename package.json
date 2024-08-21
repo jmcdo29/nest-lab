@@ -27,7 +27,6 @@
   },
   "private": true,
   "devDependencies": {
-    "$lib": "link:@typeschema/$lib",
     "@changesets/cli": "^2.23.2",
     "@nestjs/common": "10.0.3",
     "@nestjs/core": "10.0.3",
