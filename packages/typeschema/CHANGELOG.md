@@ -1,5 +1,12 @@
 # @nest-lab/typeschema
 
+## 1.0.0
+
+### Major Changes
+
+- ba2665d: Update typeschema to @typeschema/main and allow for the usage of all
+  underlying adapters
+
 ## 0.2.1
 
 ### Patch Changes
