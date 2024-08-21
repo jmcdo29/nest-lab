@@ -1,4 +1,5 @@
-import { ValidationIssue, validate } from '@decs/typeschema';
+import { validate } from '@typeschema/main';
+import type { ValidationIssue } from '@typeschema/core';
 import {
   ArgumentMetadata,
   BadRequestException,

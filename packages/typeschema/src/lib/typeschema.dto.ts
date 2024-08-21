@@ -1,4 +1,4 @@
-import { Schema, Infer } from '@decs/typeschema';
+import { Schema, Infer } from '@typeschema/main';
 
 export const TypeschemaDto = <TSchema extends Schema>(
   schema: TSchema

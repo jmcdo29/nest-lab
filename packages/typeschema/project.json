@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/typeschema/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -20,11 +21,9 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nx/vite:test",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "packages/typeschema/jest.config.ts"
-      }
+      "options": {}
     },
     "publish": {
       "executor": "nx:run-commands",
@@ -38,6 +37,5 @@
         }
       ]
     }
-  },
-  "tags": []
+  }
 }

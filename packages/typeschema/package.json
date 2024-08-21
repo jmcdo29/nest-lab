@@ -20,7 +20,8 @@
   ],
   "main": "src/index.js",
   "dependencies": {
-    "@decs/typeschema": "^0.11.7"
+    "@typeschema/core": "^0.13.2",
+    "@typeschema/main": "^0.13.10"
   },
   "peerDependencies": {
     "@nestjs/common": "^10.0.0",
