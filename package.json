@@ -28,7 +28,6 @@
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.23.2",
-    "@decs/typeschema": "^0.11.7",
     "@nestjs/common": "10.0.3",
     "@nestjs/core": "10.0.3",
     "@nestjs/platform-express": "10.0.3",
@@ -36,6 +35,7 @@
     "@nestjs/schematics": "10.0.1",
     "@nestjs/testing": "10.0.3",
     "@nrwl/tao": "19.6.1",
+    "@nx/eslint": "19.6.1",
     "@nx/eslint-plugin": "19.6.1",
     "@nx/jest": "19.6.1",
     "@nx/js": "19.6.1",
@@ -47,6 +47,8 @@
     "@types/jest": "29.5.12",
     "@types/node": "18.19.9",
     "@types/supertest": "^2.0.12",
+    "@typeschema/core": "^0.13.2",
+    "@typeschema/main": "^0.13.10",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "ajv": "^8.12.0",
@@ -76,7 +78,6 @@
     "typescript": "5.5.4",
     "valibot": "^0.15.0",
     "yup": "^1.2.0",
-    "zod": "^3.22.2",
-    "@nx/eslint": "19.6.1"
+    "zod": "^3.22.2"
   }
 }

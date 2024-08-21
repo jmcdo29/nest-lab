@@ -11,9 +11,6 @@ importers:
       '@changesets/cli':
         specifier: ^2.23.2
         version: 2.27.1
-      '@decs/typeschema':
-        specifier: ^0.11.7
-        version: 0.11.7(@sinclair/typebox@0.31.28)(ajv@8.12.0)(arktype@1.0.21-alpha)(fp-ts@2.16.1)(io-ts@2.2.21(fp-ts@2.16.1))(joi@17.11.0)(ow@0.28.2)(runtypes@6.7.0)(superstruct@1.0.3)(valibot@0.15.0)(yup@1.3.3)(zod@3.22.4)
       '@nestjs/common':
         specifier: 10.0.3
         version: 10.0.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
@@ -71,6 +68,12 @@ importers:
       '@types/supertest':
         specifier: ^2.0.12
         version: 2.0.16
+      '@typeschema/core':
+        specifier: ^0.13.2
+        version: 0.13.2
+      '@typeschema/main':
+        specifier: ^0.13.10
+        version: 0.13.10
       '@typescript-eslint/eslint-plugin':
         specifier: 7.18.0
         version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
@@ -191,15 +194,15 @@ importers:
 
   packages/typeschema:
     dependencies:
-      '@decs/typeschema':
-        specifier: ^0.11.7
-        version: 0.11.7(@sinclair/typebox@0.31.28)(ajv@8.12.0)(arktype@1.0.21-alpha)(fp-ts@2.16.1)(io-ts@2.2.21(fp-ts@2.16.1))(joi@17.11.0)(ow@0.28.2)(runtypes@6.7.0)(superstruct@1.0.3)(valibot@0.15.0)(yup@1.3.3)(zod@3.22.4)
       '@nestjs/common':
         specifier: ^10.0.0
         version: 10.0.3(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/core':
         specifier: ^10.0.0
         version: 10.0.3(@nestjs/common@10.0.3(reflect-metadata@0.1.14)(rxjs@7.8.1))(@nestjs/platform-express@10.0.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@typeschema/main':
+        specifier: ^0.13.10
+        version: 0.13.10
       reflect-metadata:
         specifier: ^0.1.13
         version: 0.1.14
@@ -920,59 +923,6 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@decs/typeschema@0.11.7':
-    resolution: {integrity: sha512-GfeuQNvf1Hfp8qdL6JQEEpTZ+Nl1cmOSy19nlF+98e06oZ4/S8PWjpTGaX2N1mXHOrRwkpjWOY97X+xyczlDfQ==}
-    peerDependencies:
-      '@deepkit/type': ^1.0.1-alpha.97
-      '@effect/data': ^0.18.6
-      '@effect/schema': ^0.36.5
-      '@sinclair/typebox': ^0.31.15
-      ajv: ^8.12.0
-      arktype: ^1.0.21-alpha
-      fp-ts: ^2.16.1
-      io-ts: ^2.2.20
-      joi: ^17.10.2
-      ow: ^0.28.2
-      runtypes: ^6.7.0
-      superstruct: ^1.0.3
-      valibot: ^0.17.0
-      vite: ^4.4.9
-      yup: ^1.2.0
-      zod: ^3.22.2
-    peerDependenciesMeta:
-      '@deepkit/type':
-        optional: true
-      '@effect/data':
-        optional: true
-      '@effect/schema':
-        optional: true
-      '@sinclair/typebox':
-        optional: true
-      ajv:
-        optional: true
-      arktype:
-        optional: true
-      fp-ts:
-        optional: true
-      io-ts:
-        optional: true
-      joi:
-        optional: true
-      ow:
-        optional: true
-      runtypes:
-        optional: true
-      superstruct:
-        optional: true
-      valibot:
-        optional: true
-      vite:
-        optional: true
-      yup:
-        optional: true
-      zod:
-        optional: true
-
   '@emnapi/core@1.2.0':
     resolution: {integrity: sha512-E7Vgw78I93we4ZWdYCb4DGAwRROGkMIXk7/y87UmANR+J6qsWusmC3gLt0H+O0KOt5e6O38U8oJamgbudrES/w==}
 
@@ -1485,6 +1435,7 @@ packages:
 
   '@swc/register@0.1.10':
     resolution: {integrity: sha512-6STwH/q4dc3pitXLVkV7sP0Hiy+zBsU2wOF1aXpXR95pnH3RYHKIsDC+gvesfyB7jxNT9OOZgcqOp9RPxVTx9A==}
+    deprecated: Use @swc-node/register instead
     hasBin: true
     peerDependencies:
       '@swc/core': ^1.0.46
@@ -1579,6 +1530,76 @@ packages:
 
   '@types/yargs@17.0.32':
     resolution: {integrity: sha512-xQ67Yc/laOG5uMfX/093MRlGGCIBzZMarVa+gfNKJxWAIgykYpVGkBdbqEzGDDfCrVUj6Hiff4mTZ5BA6TmAog==}
+
+  '@typeschema/core@0.13.2':
+    resolution: {integrity: sha512-pAt0MK249/9szYaoPuvzhSfOd3smrLhhwCCpUNB4onX32mRx5F3lzDIveIYGQkLYRq58xOX5sjoW+n72f/MLLw==}
+    peerDependencies:
+      '@types/json-schema': ^7.0.15
+    peerDependenciesMeta:
+      '@types/json-schema':
+        optional: true
+
+  '@typeschema/main@0.13.10':
+    resolution: {integrity: sha512-ArdFC4GbgdVWWgPKg2tymxx2KHMus3xZ8I2kHwqw/0P4FtWBXCmSNAiBqDtpoXXF8h9cbcm7fVpcs5ftoWT9+A==}
+    peerDependencies:
+      '@typeschema/arktype': 0.13.2
+      '@typeschema/class-validator': 0.1.2
+      '@typeschema/deepkit': 0.13.4
+      '@typeschema/effect': 0.13.4
+      '@typeschema/fastest-validator': 0.1.0
+      '@typeschema/function': 0.13.2
+      '@typeschema/io-ts': 0.13.3
+      '@typeschema/joi': 0.13.3
+      '@typeschema/json': 0.13.3
+      '@typeschema/ow': 0.13.3
+      '@typeschema/runtypes': 0.13.2
+      '@typeschema/superstruct': 0.13.2
+      '@typeschema/suretype': 0.1.0
+      '@typeschema/typebox': 0.13.4
+      '@typeschema/valibot': 0.13.5
+      '@typeschema/valita': 0.1.0
+      '@typeschema/vine': 0.1.0
+      '@typeschema/yup': 0.13.3
+      '@typeschema/zod': 0.13.3
+    peerDependenciesMeta:
+      '@typeschema/arktype':
+        optional: true
+      '@typeschema/class-validator':
+        optional: true
+      '@typeschema/deepkit':
+        optional: true
+      '@typeschema/effect':
+        optional: true
+      '@typeschema/fastest-validator':
+        optional: true
+      '@typeschema/function':
+        optional: true
+      '@typeschema/io-ts':
+        optional: true
+      '@typeschema/joi':
+        optional: true
+      '@typeschema/json':
+        optional: true
+      '@typeschema/ow':
+        optional: true
+      '@typeschema/runtypes':
+        optional: true
+      '@typeschema/superstruct':
+        optional: true
+      '@typeschema/suretype':
+        optional: true
+      '@typeschema/typebox':
+        optional: true
+      '@typeschema/valibot':
+        optional: true
+      '@typeschema/valita':
+        optional: true
+      '@typeschema/vine':
+        optional: true
+      '@typeschema/yup':
+        optional: true
+      '@typeschema/zod':
+        optional: true
 
   '@typescript-eslint/eslint-plugin@7.18.0':
     resolution: {integrity: sha512-94EQTWZ40mzBc42ATNIBimBEDltSJ9RQHCC8vc/PDbxi4k8dVwUAv4o98dk50M1zB+JGFxp43FP7f8+FP8R6Sw==}
@@ -2618,6 +2639,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -2767,6 +2789,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -3192,6 +3215,7 @@ packages:
 
   lightcookie@1.0.25:
     resolution: {integrity: sha512-SrY/+eBPaKAMnsn7mCsoOMZzoQyCyHHHZlFCu2fjo28XxSyCLjlooKiTxyrXTg8NPaHp1YzWi0lcGG1gDi6KHw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -3581,6 +3605,7 @@ packages:
   phin@3.7.0:
     resolution: {integrity: sha512-DqnVNrpYhKGBZppNKprD+UJylMeEKOZxHgPB+ZP6mGzf3uA2uox4Ep9tUm+rUc8WLIdHT3HcAE4X8fhwQA9JKg==}
     engines: {node: '>= 8'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
@@ -4066,6 +4091,7 @@ packages:
   superagent@8.1.2:
     resolution: {integrity: sha512-6WTxW1EB6yCxV5VFOIPQruWGHqc3yI7hEmZK6h+pyk69Lk/Ut7rLUY6W/ONF2MjBuGjvmMiIpsrVJ2vjrHlslA==}
     engines: {node: '>=6.4.0 <13 || >=14'}
+    deprecated: Please upgrade to v9.0.0+ as we have fixed a public vulnerability with formidable dependency. Note that v9.0.0+ requires Node.js v14.18.0+. See https://github.com/ladjs/superagent/pull/1800 for insight. This project is supported and maintained by the team at Forward Email @ https://forwardemail.net
 
   superstruct@1.0.3:
     resolution: {integrity: sha512-8iTn3oSS8nRGn+C2pgXSKPI3jmpm6FExNazNpjvqS6ZUJQCej3PUXEKM8NjHBOs54ExM+LPW/FBRhymrdcCiSg==}
@@ -5486,21 +5512,6 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@decs/typeschema@0.11.7(@sinclair/typebox@0.31.28)(ajv@8.12.0)(arktype@1.0.21-alpha)(fp-ts@2.16.1)(io-ts@2.2.21(fp-ts@2.16.1))(joi@17.11.0)(ow@0.28.2)(runtypes@6.7.0)(superstruct@1.0.3)(valibot@0.15.0)(yup@1.3.3)(zod@3.22.4)':
-    optionalDependencies:
-      '@sinclair/typebox': 0.31.28
-      ajv: 8.12.0
-      arktype: 1.0.21-alpha
-      fp-ts: 2.16.1
-      io-ts: 2.2.21(fp-ts@2.16.1)
-      joi: 17.11.0
-      ow: 0.28.2
-      runtypes: 6.7.0
-      superstruct: 1.0.3
-      valibot: 0.15.0
-      yup: 1.3.3
-      zod: 3.22.4
-
   '@emnapi/core@1.2.0':
     dependencies:
       '@emnapi/wasi-threads': 1.0.1
@@ -5943,21 +5954,6 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/js@19.6.1(@babel/traverse@7.23.6)(@swc/core@1.5.7)(@types/node@18.19.9)(nx@19.6.1(@swc/core@1.5.7))(typescript@5.4.5)':
-    dependencies:
-      '@nx/js': 19.6.1(@babel/traverse@7.23.6)(@swc/core@1.5.7)(@types/node@18.19.9)(nx@19.6.1(@swc/core@1.5.7))(typescript@5.4.5)
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
-
   '@nrwl/js@19.6.1(@babel/traverse@7.23.6)(@swc/core@1.5.7)(@types/node@18.19.9)(nx@19.6.1(@swc/core@1.5.7))(typescript@5.5.4)':
     dependencies:
       '@nx/js': 19.6.1(@babel/traverse@7.23.6)(@swc/core@1.5.7)(@types/node@18.19.9)(nx@19.6.1(@swc/core@1.5.7))(typescript@5.5.4)
@@ -6144,7 +6140,7 @@ snapshots:
       '@babel/preset-env': 7.23.6(@babel/core@7.23.6)
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.6)
       '@babel/runtime': 7.23.6
-      '@nrwl/js': 19.6.1(@babel/traverse@7.23.6)(@swc/core@1.5.7)(@types/node@18.19.9)(nx@19.6.1(@swc/core@1.5.7))(typescript@5.4.5)
+      '@nrwl/js': 19.6.1(@babel/traverse@7.23.6)(@swc/core@1.5.7)(@types/node@18.19.9)(nx@19.6.1(@swc/core@1.5.7))(typescript@5.5.4)
       '@nx/devkit': 19.6.1(nx@19.6.1(@swc/core@1.5.7))
       '@nx/workspace': 19.6.1(@swc/core@1.5.7)
       babel-plugin-const-enum: 1.2.0(@babel/core@7.23.6)
@@ -6516,6 +6512,14 @@ snapshots:
   '@types/yargs@17.0.32':
     dependencies:
       '@types/yargs-parser': 21.0.3
+
+  '@typeschema/core@0.13.2': {}
+
+  '@typeschema/main@0.13.10':
+    dependencies:
+      '@typeschema/core': 0.13.2
+    transitivePeerDependencies:
+      - '@types/json-schema'
 
   '@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)':
     dependencies:
