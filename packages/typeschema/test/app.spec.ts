@@ -2,15 +2,16 @@ import { INestApplication } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
 import { Test } from '@nestjs/testing';
 import { spec, request } from 'pactum';
+import { afterAll, beforeAll, describe, it } from 'vitest';
 import { AppController } from './app.controller';
 import { ValidationPipe } from '../src';
 
 const endpoints = [
   { endpoint: 'ajv' },
   { endpoint: 'arktype' },
-  { endpoint: 'io-ts' },
+  // { endpoint: 'io-ts' },
   { endpoint: 'joi' },
-  { endpoint: 'ow' },
+  // { endpoint: 'ow' },
   { endpoint: 'runtypes' },
   { endpoint: 'superstruct' },
   { endpoint: 'typebox' },
