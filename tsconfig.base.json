@@ -18,6 +18,9 @@
     "paths": {
       "@nest-lab/fastify-multer": ["packages/fastify-multer/src/index.ts"],
       "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"],
+      "@nest-lab/throttler-storage-redis": [
+        "packages/throttler-storage-redis/src/index.ts"
+      ],
       "@nest-lab/typeschema": ["packages/typeschema/src/index.ts"]
     }
   },

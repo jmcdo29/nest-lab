@@ -1,0 +1,56 @@
+{
+  "name": "@nest-lab/throttler-storage-redis",
+  "description": "Redis storage provider for the @nestjs/throttler package",
+  "version": "0.0.1",
+  "keywords": [
+    "nestjs",
+    "rate-limit",
+    "throttle",
+    "express",
+    "fastify",
+    "redis"
+  ],
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/jmcdo29/nest-lab",
+    "directory": "packages/throttler-storage-redis"
+  },
+  "private": false,
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@nestjs/platform-express": "10.4.1",
+    "@nestjs/platform-fastify": "10.4.1",
+    "@nestjs/testing": "10.4.1",
+    "ioredis": "5.4.1"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0",
+    "@nestjs/core": "^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0",
+    "@nestjs/throttler": ">=6.0.0",
+    "ioredis": ">=5.0.0",
+    "reflect-metadata": "^0.2.1"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": false
+    },
+    "@nestjs/core": {
+      "optional": false
+    },
+    "@nestjs/throttler": {
+      "optional": false
+    },
+    "ioredis": {
+      "optional": false
+    },
+    "reflect-metadata": {
+      "optional": false
+    }
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}
