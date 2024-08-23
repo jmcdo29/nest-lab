@@ -1,8 +1,5 @@
 # NestJS Throttler Redis Storage
 
-![Tests status](https://img.shields.io/github/actions/workflow/status/kkoomen/nestjs-throttler-storage-redis/tests.yml?label=tests&branch=master)
-[![npm](https://img.shields.io/npm/v/nestjs-throttler-storage-redis)](https://www.npmjs.com/package/nestjs-throttler-storage-redis)
-
 Redis storage provider for the
 [@nestjs/throttler](https://github.com/nestjs/throttler) package.
 
