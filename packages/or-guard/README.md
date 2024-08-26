@@ -49,6 +49,8 @@ OrGuard(guards: Array<Type<CanActivate> | InjectionToken>, orGuardOptions?: OrGu
 ```ts
 interface OrGuardOptions {
   throwOnFirstError?: boolean;
+  throwLastError?: boolean;
+  throwError?: object | ((errors: unknown[]) => unknown);
 }
 ```
 
@@ -56,6 +58,12 @@ interface OrGuardOptions {
   error is encountered or if the error should be considered a `return false`.
   The default value is `false`. If this is set to `true`, the **first** error
   encountered will lead to the same error being thrown.
+- `throwLastError`: a boolean to tell the `OrGuard` if the last error should be
+  handled with `return false` or just thrown. The default value is `false`. If
+  this is set to `true`, the **last** error encountered will lead to the same
+  error being thrown.
+- `throwError`: provide a custom error to throw if all guards fail or provide a function
+  to receive all encountered errors and return a custom error to throw.
 
 > **Note**: guards are ran in a non-deterministic order. All guard returns are
 > transformed into Observables and ran concurrently to ensure the fastest
