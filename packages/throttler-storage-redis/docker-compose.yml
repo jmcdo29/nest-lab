@@ -1,0 +1,15 @@
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - '6379:6379'
+
+  redis_cluster:
+    container_name: redis_cluster
+    image: grokzen/redis-cluster:7.0.10
+    environment:
+      - 'IP=0.0.0.0'
+    ports:
+      - '7000-7050:7000-7050'
+      - '5000-5010:5000-5010'
