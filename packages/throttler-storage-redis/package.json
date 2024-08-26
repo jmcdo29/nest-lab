@@ -1,7 +1,7 @@
 {
   "name": "@nest-lab/throttler-storage-redis",
   "description": "Redis storage provider for the @nestjs/throttler package",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "keywords": [
     "nestjs",
     "rate-limit",
