@@ -1,5 +1,12 @@
 # @nest-lab/or-guard
 
+## 2.5.0
+
+### Minor Changes
+
+- 458f98f: Allow for the `OrGuard` to handle throwing the last error or a custom
+  error when it fails to pass one of the guards.
+
 ## 2.4.1
 
 ### Patch Changes
