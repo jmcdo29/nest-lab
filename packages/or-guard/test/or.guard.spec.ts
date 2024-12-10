@@ -182,6 +182,68 @@ describe('OrGuard and AndGuard Integration Test', () => {
               });
           });
         });
+        describe('throw-last', () => {
+          /**
+           * OrGuard([SyncGuard, ThrowGuard], { throwLastError: true })
+           *
+           * | Sync | Throw | Final |
+           * | - | - | - |
+           * | true | UnauthorizedException | true |
+           * | false | UnauthorizedException | UnauthorizedException |
+           */
+          it('should throw the last error', async () => {
+            return supertest(app.getHttpServer())
+              .get('/throw-last')
+              .expect(sync ? 200 : 401)
+              .expect(({ body }) => {
+                if (!sync) {
+                  expect(body).toEqual(
+                    expect.objectContaining({ message: 'ThrowGuard' })
+                  );
+                }
+              });
+          });
+        });
+        describe('throw-custom', () => {
+          /**
+           * OrGuard([ThrowGuard, ThrowGuard], { throwError: new UnauthorizedException('Should provide either "x-api-key" header or query') })
+           *
+           * | Throw | Throw | Final |
+           * | - | - | - |
+           * | UnauthorizedException | UnauthorizedException | object |
+           * | UnauthorizedException | UnauthorizedException | object |
+           */
+          it('should throw the custom error', async () => {
+            return supertest(app.getHttpServer())
+              .get('/throw-custom')
+              .expect(401)
+              .expect(({ body }) => {
+                expect(body).toEqual(
+                  expect.objectContaining({ message: 'Should provide either "x-api-key" header or query' })
+                );
+              });
+          });
+        });
+        describe('throw-custom-narrow', () => {
+          /**
+           * OrGuard([ThrowGuard, ThrowGuard], { throwError: (errors) => new UnauthorizedException((errors as { message?: string }[]).filter(error => error.message).join(', ')) })
+           *
+           * | Throw | Throw | Final |
+           * | - | - | - |
+           * | UnauthorizedException | UnauthorizedException | UnauthorizedException |
+           * | UnauthorizedException | UnauthorizedException | unknown |
+           */
+          it('should throw the custom error', async () => {
+            return supertest(app.getHttpServer())
+              .get('/throw-custom-narrow')
+              .expect(401)
+              .expect(({ body }) => {
+                expect(body).toEqual(
+                  expect.objectContaining({ message: 'UnauthorizedException: ThrowGuard, UnauthorizedException: ThrowGuard' })
+                );
+              });
+          });
+        });
       });
     }
   );
