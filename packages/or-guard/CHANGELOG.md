@@ -1,5 +1,11 @@
 # @nest-lab/or-guard
 
+## 2.6.0
+
+### Minor Changes
+
+- 45c426c: Now supporting NestJS v11
+
 ## 2.5.0
 
 ### Minor Changes
