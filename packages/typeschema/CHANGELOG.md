@@ -1,5 +1,11 @@
 # @nest-lab/typeschema
 
+## 1.1.0
+
+### Minor Changes
+
+- 45c426c: Now supporting NestJS v11
+
 ## 1.0.0
 
 ### Major Changes
