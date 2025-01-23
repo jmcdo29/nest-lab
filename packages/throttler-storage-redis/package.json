@@ -21,9 +21,6 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@nestjs/platform-express": "10.4.1",
-    "@nestjs/platform-fastify": "10.4.1",
-    "@nestjs/testing": "10.4.1",
     "ioredis": "5.4.1"
   },
   "peerDependencies": {
