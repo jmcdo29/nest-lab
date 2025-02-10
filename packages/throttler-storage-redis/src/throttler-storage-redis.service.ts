@@ -46,6 +46,10 @@ export class ThrottlerStorageRedisService implements ThrottlerStorageRedis, OnMo
         timeToExpire = ttl
       end
 
+      if blockDuration < 0 then
+        blockDuration = timeToExpire
+      end
+
       local isBlocked = redis.call('GET', blockKey)
       local timeToBlockExpire = 0
 
