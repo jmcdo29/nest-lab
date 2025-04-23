@@ -38,6 +38,17 @@ export class ThrottlerStorageRedisService implements ThrottlerStorageRedis, OnMo
       local limit = tonumber(ARGV[3])
       local blockDuration = tonumber(ARGV[4])
 
+      local isBlocked = redis.call('GET', blockKey)
+      if isBlocked then
+        local timeToBlockExpire = redis.call('PTTL', blockKey)
+        if timeToBlockExpire > 0 then
+          local currentHits = tonumber(redis.call('GET', hitKey)) or 0
+          return { currentHits, redis.call('PTTL', hitKey), 1, timeToBlockExpire }
+        else
+          redis.call('DEL', blockKey)
+        end
+      end
+
       local totalHits = redis.call('INCR', hitKey)
       local timeToExpire = redis.call('PTTL', hitKey)
       
@@ -46,26 +57,12 @@ export class ThrottlerStorageRedisService implements ThrottlerStorageRedis, OnMo
         timeToExpire = ttl
       end
 
-      local isBlocked = redis.call('GET', blockKey)
-      local timeToBlockExpire = 0
-
-      if isBlocked then
-        timeToBlockExpire = redis.call('PTTL', blockKey)
-      elseif totalHits > limit then
+      if totalHits > limit then
         redis.call('SET', blockKey, 1, 'PX', blockDuration)
-        isBlocked = '1'
-        timeToBlockExpire = blockDuration
+        return { totalHits, timeToExpire, 1, blockDuration }
       end
 
-      if isBlocked and timeToBlockExpire <= 0 then
-        redis.call('DEL', blockKey)
-        redis.call('SET', hitKey, 1, 'PX', ttl)
-        totalHits = 1
-        timeToExpire = ttl
-        isBlocked = false
-      end
-
-      return { totalHits, timeToExpire, isBlocked and 1 or 0, timeToBlockExpire }
+      return { totalHits, timeToExpire, 0, 0 }
     `
       .replace(/^\s+/gm, '')
       .trim();
