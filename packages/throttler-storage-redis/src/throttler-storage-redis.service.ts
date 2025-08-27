@@ -17,7 +17,7 @@ export class ThrottlerStorageRedisService implements ThrottlerStorageRedis, OnMo
     if (redisOrOptions instanceof Redis || redisOrOptions instanceof Cluster) {
       this.redis = redisOrOptions;
     } else if (typeof redisOrOptions === 'string') {
-      this.redis = new Redis(redisOrOptions as string, options);
+      this.redis = new Redis(redisOrOptions as string, options ?? {});
       this.disconnectRequired = true;
     } else {
       this.redis = new Redis(redisOrOptions as RedisOptions);
