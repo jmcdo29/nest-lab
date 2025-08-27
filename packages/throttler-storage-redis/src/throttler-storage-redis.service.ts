@@ -14,12 +14,12 @@ export class ThrottlerStorageRedisService
   constructor(redis?: Redis);
   constructor(cluster?: Cluster);
   constructor(options?: RedisOptions);
-  constructor(url?: string);
-  constructor(redisOrOptions?: Redis | Cluster | RedisOptions | string) {
+  constructor(url?: string, options?: RedisOptions);
+  constructor(redisOrOptions?: Redis | Cluster | RedisOptions | string, options?: RedisOptions) {
     if (redisOrOptions instanceof Redis || redisOrOptions instanceof Cluster) {
       this.redis = redisOrOptions;
     } else if (typeof redisOrOptions === 'string') {
-      this.redis = new Redis(redisOrOptions as string);
+      this.redis = new Redis(redisOrOptions as string, options);
       this.disconnectRequired = true;
     } else {
       this.redis = new Redis(redisOrOptions as RedisOptions);
