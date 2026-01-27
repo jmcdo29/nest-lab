@@ -4,7 +4,9 @@ import Redis, { Cluster, RedisOptions } from 'ioredis';
 import { ThrottlerStorageRedis } from './throttler-storage-redis.interface';
 
 @Injectable()
-export class ThrottlerStorageRedisService implements ThrottlerStorageRedis, OnModuleDestroy {
+export class ThrottlerStorageRedisService
+  implements ThrottlerStorageRedis, OnModuleDestroy
+{
   scriptSrc: string;
   redis: Redis | Cluster;
   disconnectRequired?: boolean;
@@ -78,10 +80,10 @@ export class ThrottlerStorageRedisService implements ThrottlerStorageRedis, OnMo
     blockDuration: number,
     throttlerName: string,
   ): Promise<ThrottlerStorageRecord> {
-    const hitKey = `${this.redis.options.keyPrefix}{${key}:${throttlerName}}:hits`;
-    const blockKey = `${this.redis.options.keyPrefix}{${key}:${throttlerName}}:blocked`;
+    const hitKey = `{${key}:${throttlerName}}:hits`;
+    const blockKey = `{${key}:${throttlerName}}:blocked`;
     const results: number[] = (await this.redis.call(
-      'EVAL',
+      'eval',
       this.scriptSrc,
       2,
       hitKey,
@@ -93,7 +95,9 @@ export class ThrottlerStorageRedisService implements ThrottlerStorageRedis, OnMo
     )) as number[];
 
     if (!Array.isArray(results)) {
-      throw new TypeError(`Expected result to be array of values, got ${results}`);
+      throw new TypeError(
+        `Expected result to be array of values, got ${results}`,
+      );
     }
 
     const [totalHits, timeToExpire, isBlocked, timeToBlockExpire] = results;
