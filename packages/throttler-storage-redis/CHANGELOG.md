@@ -1,5 +1,11 @@
 # @nest-lab/throttler-storage-redis
 
+## 1.1.1
+
+### Patch Changes
+
+- 0aab6aa: support ioredis 1.9.0
+
 ## 1.1.0
 
 ### Minor Changes
