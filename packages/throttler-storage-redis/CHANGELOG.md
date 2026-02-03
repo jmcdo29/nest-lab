@@ -1,5 +1,12 @@
 # @nest-lab/throttler-storage-redis
 
+## 1.2.0
+
+### Minor Changes
+
+- ddb30ae: Add optional options to be passed when creating a new instance with
+  URL.
+
 ## 1.1.1
 
 ### Patch Changes
