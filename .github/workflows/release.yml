@@ -5,8 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_TOKEN }}
 
 jobs:
@@ -20,10 +23,10 @@ jobs:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
 
-      - name: Setup Node.js 18.x
+      - name: Setup Node.js 24.x
         uses: actions/setup-node@v1
         with:
-          node-version: 18.x
+          node-version: 24.x
 
       - name: Install pnpm
         run: npm i -g pnpm
@@ -44,24 +47,5 @@ jobs:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: pnpm nx-cloud stop-all-agents
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  agents:
-    runs-on: ubuntu-latest
-    name: Agent 1
-    timeout-minutes: 60
-    strategy:
-      matrix:
-        agent: [ 1, 2, 3 ]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 18.x
-      - name: Install pnpm
-        run: npm i -g pnpm
-      - name: Install deps
-        run: pnpm i --frozen-lockfile=false
-      - name: Start Nx Agent ${{ matrix.agent }}
-        run: pnpm nx-cloud start-agent
