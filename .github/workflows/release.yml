@@ -7,7 +7,8 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
+  pull-requests: write
 
 env:
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_TOKEN }}
@@ -31,6 +32,9 @@ jobs:
       - name: Install pnpm
         run: npm i -g pnpm
 
+      - name: Update npm
+        run: npm install -g npm@'>=11.5.1'
+
       - name: Install Dependencies
         run: pnpm i --frozen-lockfile=false
 
@@ -45,7 +49,9 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: pnpm release
+          commit-mode: 'github-api'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: '' # intentionally blank for trusted publishing
           # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
