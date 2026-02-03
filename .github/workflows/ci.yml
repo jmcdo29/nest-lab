@@ -36,8 +36,6 @@ jobs:
         run: pnpm nx affected --target=build  --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
       - name: Test Projects
         run: pnpm nx affected --target=test --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
-      - name: Tag main branch if all jobs succeed
-        uses: nrwl/nx-tag-successful-ci-run@v1
   # pr:
   #   runs-on: ubuntu-latest
   #   if: ${{ github.event_name == 'pull_request' }}
