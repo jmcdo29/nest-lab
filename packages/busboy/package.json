@@ -1,0 +1,53 @@
+{
+  "name": "@nest-lab/busboy",
+  "version": "1.0.0",
+  "description": "A File Upload package for NestJS supporting both Fastify and Express adapters",
+  "keywords": [
+    "fastify",
+    "express",
+    "nestjs",
+    "file upload",
+    "busboy",
+    "multipart"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Jay McDoniel",
+    "email": "me@jaymcdoniel.dev"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/jmcdo29/nest-lab",
+    "directory": "packages/busboy"
+  },
+  "bugs": {
+    "url": "https://github.com/jmcdo29/nest-lab/issues"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "@fastify/busboy": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9.0.0 || ^10.0.0 || ^11.0.0",
+    "@nestjs/platform-express": "^9.0.0 || ^10.0.0 || ^11.0.0",
+    "@nestjs/platform-fastify": "^9.0.0 || ^10.0.0 || ^11.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": false
+    },
+    "@nestjs/platform-express": {
+      "optional": true
+    },
+    "@nestjs/platform-fastify": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": false
+    }
+  }
+}

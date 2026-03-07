@@ -1,3 +1,6 @@
+> **Deprecated**: This package is no longer actively maintained and does not support Fastify v5.
+> Please migrate to [`@nest-lab/busboy`](../busboy/README.md), which supports both Fastify (v4/v5) and Express with the same interceptor API.
+
 # @nest-lab/fastify-multer
 
 Support for File Uploads when using the [`@nestjs/platform-fastify`](https://docs.nestjs.com/techniques/performance) adapter, using the [`fastify-multer`](https://www.npmjs.com/package/fastify-multer) library.

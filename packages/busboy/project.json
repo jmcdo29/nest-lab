@@ -1,0 +1,49 @@
+{
+  "name": "busboy",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/busboy/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/busboy",
+        "tsConfig": "packages/busboy/tsconfig.lib.json",
+        "packageJson": "packages/busboy/package.json",
+        "main": "packages/busboy/src/index.ts",
+        "assets": ["packages/busboy/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/packages/busboy",
+        "command": "pnpm publish"
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node -r @swc/register --test packages/busboy/test/index.spec.ts"
+      },
+      "configurations": {
+        "local": {
+          "command": "node -r @swc/register packages/busboy/test/index.spec.ts"
+        }
+      }
+    }
+  },
+  "tags": []
+}
