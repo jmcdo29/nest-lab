@@ -16,6 +16,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
+      "@nest-lab/busboy": ["packages/busboy/src/index.ts"],
       "@nest-lab/fastify-multer": ["packages/fastify-multer/src/index.ts"],
       "@nest-lab/or-guard": ["packages/or-guard/src/index.ts"],
       "@nest-lab/throttler-storage-redis": [
