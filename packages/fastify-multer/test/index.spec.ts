@@ -1,3 +1,4 @@
+import { coexistenceTests } from './coexistence/coexistence.spec';
 import { uploadTests } from './file-upload/file-upload.spec';
 import { multipleImportsTest } from './multiple-imports/multiple-imports.spec';
 import { uploadWithModuleOptionsTest } from './uploads-from-options/upload-from-options.spec';
@@ -7,5 +8,6 @@ import { uploadWithModuleOptionsTest } from './uploads-from-options/upload-from-
     uploadTests,
     multipleImportsTest,
     uploadWithModuleOptionsTest,
+    coexistenceTests,
   ]);
 })();

@@ -8,10 +8,13 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "nx:run-commands",
       "outputs": ["{workspaceRoot}/coverage/packages/or-guard"],
       "options": {
-        "jestConfig": "packages/or-guard/jest.config.ts"
+        "command": "jest --config packages/or-guard/jest.config.ts",
+        "env": {
+          "NODE_OPTIONS": "--experimental-vm-modules"
+        }
       }
     },
     "build": {
