@@ -49,10 +49,13 @@
       "dependsOn": ["start-docker"]
     },
     "run-tests": {
-      "executor": "@nx/jest:jest",
+      "executor": "nx:run-commands",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/throttler-storage-redis/jest.config.ts"
+        "command": "jest --config packages/throttler-storage-redis/jest.config.ts",
+        "env": {
+          "NODE_OPTIONS": "--experimental-vm-modules"
+        }
       },
       "dependsOn": ["wait-for-docker"]
     },
