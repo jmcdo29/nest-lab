@@ -43,7 +43,7 @@ export class ThrottlerStorageRedisService
       local totalHits = redis.call('INCR', hitKey)
       local timeToExpire = redis.call('PTTL', hitKey)
       
-      if timeToExpire <= 0 then
+      if timeToExpire < 0 then
         redis.call('PEXPIRE', hitKey, ttl)
         timeToExpire = ttl
       end
